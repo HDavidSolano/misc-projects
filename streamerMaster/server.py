@@ -3,12 +3,12 @@ import socket
 import _thread
 import time
 import signal
-from Connection import Connection
+import Connection
 
 # Create socket and listen on port 5005
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.bind(("", 5005))
+server_socket.bind(('localhost', 5005))
 server_socket.listen(5)
 
 opened_cameras = {}
@@ -21,8 +21,7 @@ def signal_handler(signal=None, frame=None):
 while 1:
     try:
         client_socket, address = server_socket.accept()
-        print
-        "Conencted to - ", address, "\n"
+        print("Conencted to - ", address, "\n")
         cam_url = client_socket.recv(1024)
         # if camera url does not exsists in oppened camera, open new connection,
         # or else just append client params and pass to Connection thread
@@ -38,6 +37,4 @@ while 1:
         continue
     except KeyboardInterrupt:
         server_socket.close()
-
-        del connections
         exit(0)

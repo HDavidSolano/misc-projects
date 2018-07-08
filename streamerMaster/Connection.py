@@ -18,7 +18,8 @@ class Connection(object):
 
 
     def connect(self):
-        self.connection = cv2.VideoCapture(self.url)
+        #self.connection = cv2.VideoCapture(self.url)
+        self.connection = cv2.VideoCapture(0)
         return self.connection
 
     def addConnection(self, client):
