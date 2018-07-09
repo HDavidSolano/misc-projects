@@ -28,9 +28,9 @@ while True:
         gray_frame = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY) 
         
         data = cv2.imencode('.jpg', gray_frame)[1].tostring()
-    
+        sleep(0.10)
         len_str = struct.pack('!i', len(data))
-        sleep(0.1)
+        
         s.send(len_str)
     
         s.send(data)

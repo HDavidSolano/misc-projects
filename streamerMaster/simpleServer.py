@@ -7,9 +7,9 @@ import struct
 import numpy as np
 from CamRunnable import camVideoStream
 
-#cam_holder = camVideoStream(0,30,320,240)
+cam_holder = camVideoStream(0,30,320,240)
 
-#cam_holder.start()
+cam_holder.start()
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -19,17 +19,17 @@ server_socket.listen(5)
 c, addr = server_socket.accept()  
 print ('Got connection from', addr) 
 while True:
-    #my_frame, t = cam_holder.read()
-    my_frame = cv2.imread('newplot.png')
+    my_frame, t = cam_holder.read()
+   # my_frame = cv2.imread('newplot.png')
     data = cv2.imencode('.jpg', my_frame)[1].tostring()
     #print('len:', len(data))
     len_str = struct.pack('!i', len(data))
-    sleep(0.1)
+    sleep(0.05)
     # send first the size of the image
     c.send(len_str)
     # send the encoded image  
     c.send(data)
-    sleep(0.1)
+    #sleep(0.05)
     len_str = c.recv(4)
     
     size = struct.unpack('!i', len_str)[0]
