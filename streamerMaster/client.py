@@ -4,8 +4,8 @@ import numpy
 import random
 import sys
 
-host = sys.argv[1] # e.g. localhost, 192.168.1.123
-cam_url = sys.argv[2] # rtsp://user:pass@url/live.sdp , http://url/video.mjpg ...
+host = 'localhost' # e.g. localhost, 192.168.1.123
+cam_url =  'http://url/video.mjpg' # rtsp://user:pass@url/live.sdp , http://url/video.mjpg ...
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 client_socket.connect((host, 5005))
