@@ -13,7 +13,7 @@ cam_holder.start()
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server_socket.bind(('localhost', 5005))
+server_socket.bind(('192.168.10.107', 5005))
 server_socket.listen(5)
 # Establish connection with client.
 c, addr = server_socket.accept()  

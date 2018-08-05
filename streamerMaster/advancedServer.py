@@ -19,16 +19,18 @@ server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server_socket.bind(('localhost', 5005))
 server_socket.listen(5)
 
-num_users = 1 # this specifies the number of users connected to the server
+num_users = 3 # this specifies the number of users connected to the server
 
 connected_users = 0
-time_delay = 0.25
+time_delay = 0.1
 while connected_users  < num_users:
     c, addr = server_socket.accept()
     clients.append(c)
     print ('Got connection from', addr) 
     connected_users += 1
+print("proceeding to send camera...")
 sleep(4)
+
 while True:
     #my_frame = cv2.imread('newplot.png')
     my_frame, t = cam_holder.read()
