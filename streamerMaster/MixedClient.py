@@ -40,7 +40,7 @@ s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s2.connect((HOST, PORT))
 
 
-# Video runnable
+# Video runnnable
 cam_holder = camVideoStream(0,FPS,HEIGHT,WIDTH)
 cam_holder.start()
 sleep(5)
