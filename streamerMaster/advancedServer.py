@@ -19,18 +19,13 @@ server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server_socket.bind(('192.168.10.106', 5005))
 server_socket.listen(5)
 
-<<<<<<< HEAD
 num_users = 3 # this specifies the number of users connected to the server
-=======
-num_users = 2# this specifies the number of users connected to the server
->>>>>>> branch 'master' of https://github.com/HDavidSolano/misc-projects
+
 
 connected_users = 0
-<<<<<<< HEAD
-time_delay = 0.1
-=======
+
 time_delay = 0.05
->>>>>>> branch 'master' of https://github.com/HDavidSolano/misc-projects
+
 while connected_users  < num_users:
     c, addr = server_socket.accept()
     clients.append(c)

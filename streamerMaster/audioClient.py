@@ -8,7 +8,7 @@ CHANNELS = 1
 RATE = 44100
 RECORD_SECONDS = 2
 
-HOST = 'localhost'    # Algun ip de persona
+HOST = '192.168.10.103'    # Algun ip de persona
 PORT = 5005            # Algun puerto de persona
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

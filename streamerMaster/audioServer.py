@@ -11,8 +11,8 @@ RATE = 44100
 WAVE_OUTPUT_FILENAME = "server_output.wav"
 WIDTH = 2
 
-HOST = 'localhost'        # Algun ip de persona
-PORT = 5005              # Algun puerto de persona
+HOST = '192.168.10.103'        # Algun ip de persona
+PORT = 1414              # Algun puerto de persona
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -34,14 +34,14 @@ frames = []
 
 stream.start_stream()
 data = conn.recv(CHUNK)
-
-while data != '':
+while len(data) > 0:
     q.put(data)
     if not q.empty():
         stream.write(q.get())
 
     # stream.write(data)
     data = conn.recv(CHUNK)
+    print(len(data))
     frames.append(data)
 
 wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')

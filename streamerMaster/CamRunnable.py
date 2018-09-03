@@ -4,6 +4,7 @@ from threading import Thread
 import cv2
 import datetime
 from time import sleep
+
 class camVideoStream:
     def __init__(self,src,fps,width,height):
         self.stream = cv2.VideoCapture(src)
